@@ -1,8 +1,8 @@
 import {module, test} from 'qunit';
 import Ember from 'ember';
-import object from 'ember-option/object';
+import initializer from 'ember-option/initializers/extend-object-with-option';
 
-object();
+initializer();
 
 module('Unit | object');
 

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ExtendObjectWithOptionInitializer from 'dummy/initializers/extend-object-with-option';
+import extendObjectWithOptionInitializer from 'ember-option/initializers/extend-object-with-option';
 import { module, test } from 'qunit';
 
 let application;
@@ -15,7 +15,7 @@ module('Unit | Initializer | extend object with option', {
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  ExtendObjectWithOptionInitializer.initialize(application);
+  extendObjectWithOptionInitializer(application);
 
   // you would normally confirm the results of the initializer here
   assert.ok(true);
