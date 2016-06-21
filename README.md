@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/badges/cc3250a690f737000fe9/gpa.svg)](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/feed)
+[![Test Coverage](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/badges/cc3250a690f737000fe9/coverage.svg)](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/coverage)
+[![Issue Count](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/badges/cc3250a690f737000fe9/issue_count.svg)](https://codeclimate.com/repos/5769ac4f7a510f00850022fe/feed)
+
 # Ember-option
 
 This README outlines the details of collaborating on this Ember addon.

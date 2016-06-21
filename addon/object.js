@@ -4,7 +4,7 @@ import option from './option';
 /**
  * Reopen the prototype in order to apply our option
  */
-Ember.reopen({
+Ember.Object.reopen({
 
   /**
    * Returns an option Some/None of the value at the given key.

@@ -215,7 +215,7 @@ class Some {
   }
 }
 
-export const isOption = (value) => value instanceof None || value instanceof Some;
+export const isOption = (value) => value === None || value instanceof Some;
 export const some = (value) => new Some(value);
 export const none = None;
 export const option = (value) => !!value ? some(value) : none;
