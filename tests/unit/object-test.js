@@ -1,29 +1,31 @@
-import {module, test} from 'qunit';
-import Ember from 'ember';
+/* jshint expr:true */
+import {expect} from 'chai';
+import {
+  describe,
+  it
+} from 'mocha';
 import initializer from 'ember-option/initializers/extend-object-with-option';
+import Ember from 'ember';
 
 initializer();
 
-module('Unit | object');
+describe('Object#getAsOption', function () {
+  // Replace this with your real tests.
+  it('should be installed on Ember.Object', function () {
+    const myObject = Ember.Object.create({
+      foo: null,
+      bar: '',
+      baz: 'baz',
+      qux: true
+    });
 
-// Replace this with your real tests.
-test('does extend object', function (assert) {
+    expect(myObject.getAsOption('foo').isEmpty).to.equal(true);
+    expect(myObject.getAsOption('bar').isEmpty).to.equal(true);
 
-  console.log("Writing Object");
+    expect(myObject.getAsOption('baz').isEmpty).to.equal(false);
+    expect(myObject.getAsOption('qux').isEmpty).to.equal(false);
 
-  const myObject = Ember.Object.create({
-    foo: null,
-    bar: '',
-    baz: [],
-    qux: {}
+    expect(myObject.getAsOption('baz').value).to.equal('baz');
+    expect(myObject.getAsOption('qux').value).to.equal(true);
   });
-
-  console.log(myObject);
-  console.log(myObject.get('foo'));
-  console.log(Ember.Object.prototype.getAsOption);
-
-  assert.ok(myObject.getAsOption('foo').isEmpty);
-  assert.ok(myObject.getAsOption('bar').isEmpty);
-  assert.ok(myObject.getAsOption('baz').isDefined);
-  assert.ok(myObject.getAsOption('qux').isDefined);
 });

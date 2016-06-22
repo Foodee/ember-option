@@ -1,19 +1,15 @@
+/**
+ * See Some for jsdoc
+ * @type {Object}
+ */
 const None = Object.create({
   get value() {
     throw new Error('Called value on none');
   },
 
-  nonEmpty() {
-    return false;
-  },
-
-  isDefined() {
-    return false;
-  },
-
-  isEmpty() {
-    return true;
-  },
+  nonEmpty: false,
+  isDefined: false,
+  isEmpty: true,
 
   contains(value) {
     return false;
@@ -39,13 +35,17 @@ const None = Object.create({
     return None;
   },
 
+  forEach(predicate) {
+    // NOOP
+  },
+
   toArray () {
     return [];
   },
 
   orElse: callOrReturn,
 
-  getOrElse: callOrReturn
+  valueOrElse: callOrReturn
 });
 
 function callOrReturn(value) {
@@ -59,34 +59,30 @@ function callOrReturn(value) {
 class Some {
 
   constructor(value) {
-    this.value(value);
-  }
+    this._value = value;
 
-  /**
-   * Returns true if the option is Some, false if the option is None
-   *
-   * @returns {boolean}
-   */
-  nonEmpty() {
-    return true;
-  }
 
-  /**
-   * Returns true if the option is Some, false if the option is None
-   *
-   * @returns {boolean}
-   */
-  isDefined() {
-    return true;
-  }
+    /**
+     * Returns true if the option is Some, false if the option is None
+     *
+     * @property {boolean}
+     */
+    this.nonEmpty = true;
 
-  /**
-   * Returns false if the option is Some, true if the option is None
-   *
-   * @returns {boolean}
-   */
-  isEmpty() {
-    return false;
+    /**
+     * Returns true if the option is Some, false if the option is None
+     *
+     * @proptery {boolean}
+     */
+    this.isDefined = true;
+
+    /**
+     * Returns false if the option is Some, true if the option is None
+     *
+     * @returns {boolean}
+     */
+    this.isEmpty = false;
+
   }
 
   /**
@@ -125,7 +121,7 @@ class Some {
   }
 
   /**
-   * Returns self if the predicate is false , otherwise returns None
+   * Returns self if the predicate is true, otherwise returns None
    *
    * @param predicate
    * @returns {*}
@@ -192,6 +188,12 @@ class Some {
     return [this._value];
   }
 
+  /**
+   * Calls the provided function in the event of None
+   *
+   * @param {function}
+   * @returns {Some}
+   */
   orElse(value) {
     return this;
   }
@@ -210,12 +212,13 @@ class Some {
    * @param value
    * @returns {*}
    */
-  getOrElse(value) {
+  valueOrElse(value) {
     return this._value;
   }
 }
 
-export default (value) => value === None || value instanceof Some;
+export const isOption = (value) => value === None || value instanceof Some;
 export const some = (value) => new Some(value);
 export const none = None;
 export const option = (value) => !!value ? some(value) : none;
+export default option;

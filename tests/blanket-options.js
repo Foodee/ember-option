@@ -7,7 +7,7 @@ var options = {
   loaderExclusions: [],
   enableCoverage: true,
   cliOptions: {
-    reporters: ['json'],
+    reporters: ['json', 'lcov', 'html'],
     autostart: true
   }
 };
