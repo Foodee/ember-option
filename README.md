@@ -79,7 +79,7 @@ Ember.Object.extend({
   }
 });
 
-let maybeString Obj.create({
+let maybeString = Obj.create({
   foo: 'foo',
   bar: 'bar',
   baz: 'baz',
@@ -95,3 +95,13 @@ let maybeString2 = Obj.create({
  
 maybeString2.valueOrElse('something went wrong') // something went wrong
 ```
+
+### Contributors
+
+- Joe Gaudet - joe.gaudet@food.eee
+- Kenneth Buck - kenneth@kennethbuck.ca
+
+### Shout Outs
+
+- Martin Odersky (I was a scala dev once)
+- mwilliamson https://github.com/mwilliamson/node-options

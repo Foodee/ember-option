@@ -1,7 +1,7 @@
 {
   "name": "ember-option",
-  "version": "0.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.1",
+  "description": "An Ember Addon to allow for the use of the Option Data type",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,15 +11,16 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/Foodee/ember-option/tree/master/tests/unit",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Joe Gaudet joe.gaudet@food.ee",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
     "chai-spies": "^0.7.1",
+    "codeclimate-test-reporter": "^0.3.3",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.5.0",
     "ember-cli-app-version": "^1.0.0",
