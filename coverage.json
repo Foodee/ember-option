@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "suites": 16,
+    "tests": 34,
+    "passes": 0,
+    "pending": 0,
+    "failures": 34,
+    "start": "2016-06-22T02:57:11.383Z",
+    "end": "2016-06-22T02:57:11.465Z"
+  },
+  "coverage": {
+    "total": {
+      "statementsTotal": 66,
+      "statementsCovered": 61,
+      "percentage": 92.42
+    },
+    "files": [
+      {
+        "name": "ember-option/initializers/extend-object-with-option",
+        "statementsTotal": 6,
+        "statementsCovered": 6,
+        "percentage": 100
+      },
+      {
+        "name": "ember-option/option",
+        "statementsTotal": 60,
+        "statementsCovered": 55,
+        "percentage": 91.67
+      }
+    ]
+  }
+}

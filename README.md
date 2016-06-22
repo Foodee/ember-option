@@ -4,27 +4,94 @@
 
 # Ember-option
 
-This README outlines the details of collaborating on this Ember addon.
+Ever wanted to use Options in ember, well this addon gives you exactly that ability. Say goodbye to null checking 
+your data, and hello to monadic composition.
 
-## Installation
+## Usage
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+Simply import this addon, and it will add getAsOption('key') to the Ember.Object class.
 
-## Running
+### Null Checking
+```Javascript
+const Obj = Ember.Object.extend({
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
+  
+  /**
+    * @returns {null|string}
+    */   
+  someFunction() {
+    const foo = this.get('foo');
+    const bar = this.get('bar');
+    const baz = this.get('baz');
+    const qux = '';
+  
+    if (foo !== null && bar !== null && this.get('baz'){
+        qux = foo + bar + baz; 
+    }
+    
+    return qux;
+  }
+});
 
-## Running Tests
+Obj.create({
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
+}).someFunction() // returns a string
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
 
-## Building
+Obj.create({
+  foo: null,
+  bar: null,
+  baz: null,
+}).someFunction() // likely returns a NPE 
 
-* `ember build`
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+```
+
+The above code encourages propgation of nulls, which can lead to all kinds of trouble.
+
+### Options
+
+```Javascript
+// using options (I'd kill for a for comprehension)
+
+Ember.Object.extend({
+
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
+
+  /**
+    * @returns {Option.<string>}
+    */   
+  someFunction() {
+    return this.getAsOption('foo')
+            .flatMap(foo => 
+              this.getAsOption('bar')
+                .flatMap(bar => 
+                  this.getAsOption('baz').map(baz => foo + bar + baz) 
+                )
+            )
+  }
+});
+
+let maybeString Obj.create({
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
+}).someFunction(); // returns Option.<string>
+
+maybeString.valueOrElse('foo') // foobarbaz
+
+let maybeString2 = Obj.create({
+  foo: null,
+  bar: null,
+  baz: null,
+}).someFunction() // None
+ 
+maybeString2.valueOrElse('something went wrong') // something went wrong
+```
